@@ -1,7 +1,7 @@
 <template>
   <main>
 
-    CONTENT
+    CONTENT QUESTO è MAIN
     
   </main>
 </template>
