@@ -51,17 +51,32 @@ export default {
       justify-content: space-between;
       display: flex;
       padding: 12px;
+      background-color: $bg-header;
+      
       .left-header{
             display: flex;
 
             .logo {
             width: 100px;
-            height: 50px;
+            height: 100%;
+            margin-right: 16px;
 
                   img {
                         width: 100%;
                   }
             }
+      }
+      .right-header {
+            display: flex;
+
+            .search-bar{
+                  margin-left: 8px;
+            }
+            .menu-content{
+                  padding: 0 8px
+
+            }
+
       }
 
 }
