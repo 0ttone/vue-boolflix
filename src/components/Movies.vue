@@ -1,12 +1,14 @@
 <template>
       
-<div class="col-3 ">
+<div class="movies-card col-3">
        
        <div class="img-container">image</div>
-       <div>{{title}}</div>
-       <div>{{original_title}}</div>
-       <div>{{original_language}}</div>
-       <div>{{vote_average}}</div>
+       <div class="info-movies">
+            <div class="title">{{title}}</div>
+            <div class="original-title">{{original_title}}</div>
+            <div class="original-language">{{original_language}}</div>
+            <div class="vote-average">{{vote_average}}</div>
+       </div>
 
 
 </div>
@@ -31,10 +33,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-container {
-      background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
-      background-repeat: no-repeat;
-      height: 500px;
+//@import '..style/colors.scss'; !!!! non funziona-perché??
+
+.movies-card {
+      //rivedere soluzione position / opacity e col rispetto al contenitore della card 
+      .img-container {
+            background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            height: 350px;
+      }
+      .info-movies{
+            color: white;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0.3;
+            transition: 0.3s;
+            &:hover{
+                  opacity: 1;
+            }
+
+      }
 }
 
 </style>

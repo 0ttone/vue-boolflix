@@ -48,11 +48,12 @@ export default {
 <style scoped lang="scss">
 @import '../style/colors.scss';
 .content-header {
+      width:100%;
       justify-content: space-between;
       display: flex;
       padding: 12px;
       background-color: $bg-header;
-      
+
       .left-header{
             display: flex;
 
