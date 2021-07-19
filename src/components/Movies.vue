@@ -2,12 +2,13 @@
       
 <div class="movies-card col-3">
        
-       <div class="img-container">image</div>
-       <div class="info-movies">
-            <div class="title">{{title}}</div>
-            <div class="original-title">{{original_title}}</div>
-            <div class="original-language">{{original_language}}</div>
-            <div class="vote-average">{{vote_average}}</div>
+       <div class="img-container">image
+            <div class="info-movies">
+                  <div class="title">{{title}}</div>
+                  <div class="original-title">{{original_title}}</div>
+                  <div class="original-language">{{original_language}}</div>
+                  <div class="vote-average">{{vote_average}}</div>
+            </div>
        </div>
 
 
@@ -37,6 +38,7 @@ export default {
 
 .movies-card {
       //rivedere soluzione position / opacity e col rispetto al contenitore della card 
+      
       .img-container {
             background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
             background-repeat: no-repeat;
@@ -46,9 +48,9 @@ export default {
       .info-movies{
             color: white;
             font-size: 16px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(4, 4, 4, 0.5);
             opacity: 0.3;
-            transition: 0.3s;
+            align-items: center;
             &:hover{
                   opacity: 1;
             }

@@ -11,7 +11,7 @@
           :title="movie.title"
           :original_title="movie.original_title"
           :original_language="movie.original_language"
-          :vote_average="movie.vote_average"/>;
+          :vote_average="movie.vote_average"/>
           </div>
 
 
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Movies from './Movies.vue'
+import Movies from '@/components/Movies.vue'
 export default {
   name: 'Main',
 
@@ -40,6 +40,9 @@ export default {
 
 
 <style scoped lang="scss">
+main{
+      margin-top: 25px;
+}
 
 
 </style>

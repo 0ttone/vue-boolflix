@@ -13,7 +13,7 @@
               </div>
               <div class="right-header d-flex">
                     <div class="search-bar">
-                          <input type="text" placeholder="search" v-model="search">
+                          <input type="text" placeholder="search" v-model="searchString" @keyup.enter="$emit ('search', searchString)" >
                     </div>
                     <div class="menu-content">
                           <div><a href="#">blabbla</a></div>
@@ -35,7 +35,7 @@ export default {
 
   data: function (){
         return {
-              search:'',
+              searchString:"",
         }
 
   }

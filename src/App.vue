@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <Header/>
-    <Main :movies="movies.results"/>
+        //ERRORE BATTITURA - -45MINUTI
+    <Header @search="searchMovies" />
+    <Main :movies="moviesFiltered"/>
     
   </div>
 </template>
 
 <script>
 
-import Header from './components/Header.vue';
-import Main from './components/Main.vue';
-//import axios from 'axios'
+import Header from '@/components/Header.vue';
+import Main from '@/components/Main.vue';
+import axios from 'axios'
 
 export default {
   name: 'App',
@@ -21,91 +22,47 @@ export default {
   data: function (){
         return {
               //ATTENZIONE ARRAY PROVA MOCKUP DATI- a cose fatte -->il risultato vuoto che pesca 
-              //nell api fornita da axios e  --->sarà una variabile this in create --ATTENZIONE
-            movies: {
-                        "page": 1,
-                        "results": [
-                              {
-                                    "adult": false,
-                                    "backdrop_path": "/3lbTiIN8cVonMUQwaeh5nvn61lr.jpg",
-                                    "genre_ids": [
-                                    12,
-                                    35,
-                                    878,
-                                    10751
-                                    ],
-                                    "id": 105,
-                                    "original_language": "en",
-                                    "original_title": "Back to the Future",
-                                    "overview": "Eighties teenager Marty McFly is accidentally sent back in time to 1955, inadvertently disrupting his parents' first meeting and attracting his mother's romantic interest. Marty must repair the damage to history by rekindling his parents' romance and - with the help of his eccentric inventor friend Doc Brown - return to 1985.",
-                                    "popularity": 38.464,
-                                    "poster_path": "/7lyBcpYB0Qt8gYhXYaEZUNlNQAv.jpg",
-                                    "release_date": "1985-07-03",
-                                    "title": "Back to the Future",
-                                    "video": false,
-                                    "vote_average": 8.3,
-                                    "vote_count": 15222
-                              },
-                              {
-                                    "adult": false,
-                                    "backdrop_path": "/a4qvbI9x3nqu3hKQyDRVVBpMklx.jpg",
-                                    "genre_ids": [
-                                    12,
-                                    35,
-                                    10751,
-                                    878
-                                    ],
-                                    "id": 165,
-                                    "original_language": "en",
-                                    "original_title": "Back to the Future Part II",
-                                    "overview": "Marty and Doc are at it again in this wacky sequel to the 1985 blockbuster as the time-traveling duo head to 2015 to nip some McFly family woes in the bud. But things go awry thanks to bully Biff Tannen and a pesky sports almanac. In a last-ditch attempt to set things straight, Marty finds himself bound for 1955 and face to face with his teenage parents -- again.",
-                                    "popularity": 21.527,
-                                    "poster_path": "/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg",
-                                    "release_date": "1989-11-22",
-                                    "title": "Back to the Future Part II",
-                                    "video": false,
-                                    "vote_average": 7.7,
-                                    "vote_count": 9744
-                              },
-                              {
-                                    "adult": false,
-                                    "backdrop_path": "/igaRMweCynEGoS6w4Rsim7JPnKu.jpg",
-                                    "genre_ids": [
-                                    12,
-                                    35,
-                                    878
-                                    ],
-                                    "id": 196,
-                                    "original_language": "en",
-                                    "original_title": "Back to the Future Part III",
-                                    "overview": "The final installment of the Back to the Future trilogy finds Marty digging the trusty DeLorean out of a mineshaft and looking for Doc in the Wild West of 1885. But when their time machine breaks down, the travelers are stranded in a land of spurs. More problems arise when Doc falls for pretty schoolteacher Clara Clayton, and Marty tangles with Buford Tannen.",
-                                    "popularity": 17.89,
-                                    "poster_path": "/crzoVQnMzIrRfHtQw0tLBirNfVg.jpg",
-                                    "release_date": "1990-05-25",
-                                    "title": "Back to the Future Part III",
-                                    "video": false,
-                                    "vote_average": 7.4,
-                                    "vote_count": 7863
-                              }
-                        ],
-                        "total_pages": 1,
-                        "total_results": 3
-                        },
+              //nell api fornita da axios con query predefinita 'popular' che rimane o torna la principale se 
+              //il campo di ricerca è vuoto->vedi commento METHOD
+            popular: [],
+            moviesFiltered: [],
         }
-
   },
 
-  /*  AREE LAVORO
-      methods:{
+      created() {
+            axios.get("https://api.themoviedb.org/3/movie/popular?api_key=a53522894d1bbda81e60114afc99aada").then((result) =>{
+                  this.popular = result.data.results;
+                  this.moviesFiltered = result.data.results;
+                  console.log(this.popular)
+            })
 
       },
+      methods:{ //il risultato fornito dall emit in Header è argomento di funzione per ottenere i risultati:
+                  //campo vuoto o azzerato restituisce la query axios presente in created !!!il return CHIUDE il
+                  //discorso li, alternativa sarebbe stato un else su un altra chiamata axios ->vedi sotto
+            searchMovies (searchString){
+                  if (searchString.length == 0){
+                        this.moviesFiltered = this.popular
+                        return;
+                  }
+            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a53522894d1bbda81e60114afc99aada&query=${searchString}`).then((result) =>{
+                  this.moviesFiltered = result.data.results;
+                  })
+
+
+            }
+
+      },
+
+
+  /*  AREE LAVORO
+      
       computed: {
 
       },
-      created() {
+      */
 
-      }
-   */ 
+    
 
 
 
