@@ -34,11 +34,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//@import '..style/colors.scss'; !!!! non funziona-perché??
-
+@import '../style/colors.scss'; 
 .movies-card {
       //rivedere soluzione position / opacity e col rispetto al contenitore della card 
-      
+
       .img-container {
             background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
             background-repeat: no-repeat;
@@ -46,7 +45,7 @@ export default {
             height: 350px;
       }
       .info-movies{
-            color: white;
+            color: $text-white;
             font-size: 16px;
             background-color: rgba(4, 4, 4, 0.5);
             opacity: 0.3;
