@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-        //ERRORE BATTITURA - -45MINUTI
+        
     <Header @search="searchMovies" />
-    <Main :movies="moviesFiltered"/>
-    
+    <Main :movies="moviesFiltered" :popular="popular" :series="series" @search="[searchMovies($event), searchSeries($event)]"/>
+    <!--in sostanza $event sostituisce genericamente la chiave $searchInput-->
   </div>
 </template>
 
@@ -26,6 +26,8 @@ export default {
               //il campo di ricerca è vuoto->vedi commento METHOD
             popular: [],
             moviesFiltered: [],
+              //introduciamo series
+            series: [],
         }
   },
 
@@ -45,12 +47,25 @@ export default {
                         this.moviesFiltered = this.popular
                         return;
                   }
+                  //ovvero questa che cerca tra tutti i movie (guarda qui sotto: dopo search/)
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a53522894d1bbda81e60114afc99aada&query=${searchString}`).then((result) =>{
                   this.moviesFiltered = result.data.results;
+                  console.log(this.moviesFiltered)
                   })
 
+            },
+                  //Prepariamo un'altra ricerca per 'series' (tv dopo search/nella stringa qui sotto )
+                  //nel Main in template verrà introdotta una sintassi di ricerca separata e multipla avanzata:
+                  //in sostanza $event sostituisce genericamente la chiave ($searchString)
+            searchSeries (searchString){
+                  console.log("series mi vedi?");
+                  axios.get(`https://api.themoviedb.org/3/search/tv?api_key=a53522894d1bbda81e60114afc99aada&query=${searchString}`).then((result) =>{
+                  this.series = result.data.results;
+                  console.log(this.series)
+                  })
+            }      
 
-            }
+
 
       },
 
