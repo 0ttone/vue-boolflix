@@ -7,7 +7,10 @@
                   <div class="info-movies ">
                         <div class="title">{{title}}</div>
                         <div class="original-title">{{original_title}}</div>
-                        <div class="original-language">{{original_language}}</div>
+                        <!--<div class=" flag-container original-language">
+                              Original language
+                              <img :src="getFlag(original_language)">
+                              </div>-->
                         <div class="vote-average">{{vote_average}}</div>
                         <!--ripresa lezione -da rivedere elvis e ternari-->
                         <div class="star-container">
@@ -51,7 +54,10 @@ export default {
     methods:{
           getPoster(endPathImg) {
                 return `https://image.tmdb.org/t/p/w500/${endPathImg}`;
-          }
+          },
+          //getFlag(originalLanguage){
+          //      return require("../assets/flags/"+ originalLanguage );
+         // }
 
     }
 }
@@ -91,6 +97,13 @@ export default {
                               font-weight: bold ;
 
                         }
+                        .flag-container {
+                              img{
+                                    max-width: 48px;
+                              }
+
+                        }
+                        
                         .star-container{
                               i{
                                     font-size: 12px;
