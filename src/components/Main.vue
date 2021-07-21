@@ -36,9 +36,8 @@
                         :title="movie.title"
                         :original_title="movie.original_title"
                         :original_language="movie.original_language"
-                        :vote_average="movie.vote_average"/>
-                     <!--:getPoster="movie.poster_path"
-                        :image="movie.poster_path"-->
+                        :vote_average="movie.vote_average"
+                        :poster_path="movie.poster_path"/>
                </div>
 
                <h2>SERIES</h2>  
@@ -50,9 +49,8 @@
                         :title="movie.name"
                         :original_title="movie.original_name"
                         :original_language="movie.original_language"
-                        :vote_average="movie.vote_average"/>
-                     <!--:getPoster="movie.poster_path"
-                        :image="movie.poster_path"-->
+                        :vote_average="movie.vote_average"
+                        :poster_path="movie.poster_path"/>
                </div>
 
          </div>
@@ -94,8 +92,10 @@ export default {
 
 
 <style scoped lang="scss">
+@import '../style/colors.scss';
 main{
       margin-top: 25px;
+      
 }
 
 

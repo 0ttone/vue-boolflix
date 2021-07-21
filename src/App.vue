@@ -85,6 +85,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./style/app.scss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   
