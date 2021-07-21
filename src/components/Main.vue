@@ -16,21 +16,21 @@
          <div v-if="movies.length === 0 && series.length === 0 " >
                <h2>POPULAR</h2>  
                <div class="d-flex flex-wrap">
-                        <Movies
+                        <Movie
                         v-for="movie in popular"
                         :key="movie.id"
                         :title="movie.title"
                         :original_title="movie.original_title"
                         :original_language="movie.original_language"
                         :vote_average="movie.vote_average"
-                        :getPoster="movie.poster_path"/>
+                        :poster_path="movie.poster_path"/>
                         <!--:image="movie.poster_path"-->
                </div>
          </div>
          <div v-else>
                <h2>MOVIES</h2>  
                <div class="d-flex flex-wrap">
-                        <Movies
+                        <Movie
                         v-for="movie in movies"
                         :key="movie.id"
                         :title="movie.title"
@@ -44,7 +44,7 @@
                <h2>SERIES</h2>  
                <!--modifica key : sono diverse in search/tv-->
                <div class="d-flex flex-wrap">
-                        <Movies
+                        <Movie
                         v-for="movie in series"
                         :key="movie.id"
                         :title="movie.name"
@@ -73,12 +73,12 @@
 </template>
 
 <script>
-import Movies from '@/components/Movies.vue'
+import Movie from '@/components/Movie.vue'
 export default {
   name: 'Main',
 
   components:{
-        Movies,
+        Movie,
 
   },
   props: {

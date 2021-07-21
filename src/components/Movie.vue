@@ -2,7 +2,7 @@
       
 <div class="movies-card col-3">
        
-       <div class="img-container" :style="'background-image:url('+ getPoster(movie.poster_path) +')'">
+       <div class="img-container" :style="'background-image:url('+ getPoster(poster_path) +')'">
 
                   <div class="title">{{title}}</div>
                   <div class="original-title">{{original_title}}</div>
@@ -19,7 +19,7 @@
 <script>
 
 export default {
-    name: "Movies",  
+    name: "Movie",  
     props: {
           image: String,
           poster_path:String,
