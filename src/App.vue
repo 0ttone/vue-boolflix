@@ -1,8 +1,8 @@
 <template>
   <div id="app">
         
-    <Header @search="searchMovies" />
-    <Main :movies="moviesFiltered" :popular="popular" :series="series" @search="[searchMovies($event), searchSeries($event)]"/>
+    <Header @search="[searchMovies($event), searchSeries($event)]" />
+    <Main :movies="moviesFiltered" :popular="popular" :series="series" />
     <!--in sostanza $event sostituisce genericamente la chiave $searchInput-->
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
 
             },
                   //Prepariamo un'altra ricerca per 'series' (tv dopo search/nella stringa qui sotto )
-                  //nel Main in template verrà introdotta una sintassi di ricerca separata e multipla avanzata:
+                  //nel Header (o dove è il listeners del emit ovvero la ricerca) in template verrà introdotta una sintassi di ricerca separata e multipla avanzata:
                   //in sostanza $event sostituisce genericamente la chiave ($searchString)
             searchSeries (searchString){
                   console.log("series mi vedi?");

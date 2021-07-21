@@ -2,17 +2,17 @@
       
 <div class="movies-card col-3">
        
-       <div class="img-container">image
-            <div class="info-movies">
+       <div class="img-container" :style="'background-image:url('+ getPoster(movie.poster_path) +')'">
+
                   <div class="title">{{title}}</div>
                   <div class="original-title">{{original_title}}</div>
                   <div class="original-language">{{original_language}}</div>
                   <div class="vote-average">{{vote_average}}</div>
             </div>
-       </div>
+ </div>
 
 
-</div>
+
 
 </template>
 
@@ -22,10 +22,18 @@ export default {
     name: "Movies",  
     props: {
           image: String,
+          poster_path:String,
           title: String,
           original_title: String,
           original_language: String,
           vote_average: Number,
+
+    },
+
+    methods:{
+          getPoster(endPathImg) {
+                return `https://image.tmdb.org/t/p/w500/${endPathImg}`;
+          }
 
     }
 }
@@ -39,9 +47,9 @@ export default {
       //rivedere soluzione position / opacity e col rispetto al contenitore della card 
 
       .img-container {
-            background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
+            // background-image: url("https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg");
+            position:relative;
+            background-size: cover;
             height: 350px;
       }
       .info-movies{

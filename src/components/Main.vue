@@ -22,9 +22,9 @@
                         :title="movie.title"
                         :original_title="movie.original_title"
                         :original_language="movie.original_language"
-                        :vote_average="movie.vote_average"/>
-                     <!--:getPoster="movie.poster_path"
-                        :image="movie.poster_path"-->
+                        :vote_average="movie.vote_average"
+                        :getPoster="movie.poster_path"/>
+                        <!--:image="movie.poster_path"-->
                </div>
          </div>
          <div v-else>
@@ -42,12 +42,13 @@
                </div>
 
                <h2>SERIES</h2>  
+               <!--modifica key : sono diverse in search/tv-->
                <div class="d-flex flex-wrap">
                         <Movies
                         v-for="movie in series"
                         :key="movie.id"
-                        :title="movie.title"
-                        :original_title="movie.original_title"
+                        :title="movie.name"
+                        :original_title="movie.original_name"
                         :original_language="movie.original_language"
                         :vote_average="movie.vote_average"/>
                      <!--:getPoster="movie.poster_path"
